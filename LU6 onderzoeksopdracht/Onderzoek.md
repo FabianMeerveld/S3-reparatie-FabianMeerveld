@@ -1,23 +1,22 @@
-`` (haal de cues tussen backticks achteraf weg) In dit document documenteer je een **individueel** methodologisch verantwoord (verbeter-)onderzoekje en de implementatie van het eruitvoortkomende advies. Typisch kun je dat gaan doen nadat er een werkend prototype is. Kies je onderwerp in overleg met teamgenoten en docent. Het kan een performance optimalisatie zijn of het toevoegen van niet-triviale, nieuwe functionaliteit. Verder belangrijk: zorg dat het een logisch, makkelijk leesbaar geheel wordt. Voeg daarom bij figuren of plaatjes ook begeleidende tekst toe.``
-
 # Upgrade-opdracht harstlagsensor
 Door Fabian Meerveld
 
-# Inhoudsopgave
-
 # Inleiding
-`` Bespreek het **doel** van het onderzoek, en waarom het nodig is (niet trivaal) - de **achtergrond**, het **nut** voor het project.``
 Het doel van dit onderzoek is om te bepalen welke hartslagsensor het meest geschikt is voor integratie in het rollatornavigatorproject. Bij het project word de gezondheid van de gebruiker in de gaten gehouden om de nodige inzichten te krijgen. De juiste hartslag sensor is hiervoor zeer belangrijk.
 
 # Vooronderzoek en Theoretisch kader
-`` Een lijst met begrippen/definities. Links naar boeken of webpaginas met mogelijk voor het onderzoek relevante informatie. Een lijst met topics die relevant kunnen zijn voor je onderzoek.``
+Galli, A., Montree, R. J. H., Que, S., Peri, E., & Vullings, R. (2022). An Overview of the Sensors for Heart Rate Monitoring Used in Extramural Applications. Sensors, 22(11), 4035. https://doi.org/10.3390/s22114035
+
+Turing Lab Hardware Shop. (z.d.). https://hu-hbo-ict.gitlab.io/turing-lab/ti-lab-shop/
+
+Wikipedia contributors. (2024, 20 september). Heart rate monitor. Wikipedia. https://en.wikipedia.org/wiki/Heart_rate_monitor
+
+Brb. (2024, 11 augustus). Het hart - Biologielessen.nl. Blueprint Website. https://biologielessen.nl/het-hart/
 
 # Hoofdvraag
-`` Formulier hier de hoofdvraag die je met het onderzoek. Belangrijk daarbij: zorg dat het aansluit bij de doelstelling en dat een antwoord op de vraag je volledig verder helpt. Probeer de vraag te kwantificeren. Betrek in de vraag wat er voor nodig is en hoe het gerealiseerd kan worden. Voorbeeld: "Welke middelen zijn er nodig en hoe moeten die worden gebruikt om een signaal bereik van tenminste 10 meter in een vrije zichtlijn te realiseren? ``
 Welke sensor is het meest geschikt om de hartslag van een gebruiker nauwkeurig te detecteren tijdens het gebruik van een rolator?
 
 # Deelvragen
-`` Zet hier een lijst met deelvragen. Maak een decompositie van de hoofdvraag in relevante deelvragen. Als je alle deelvragen hebt beantwoord moet je de hoofdvraag kunnen beantwoorden. Er zijn geen deelvragen die niet relevant zijn voor de hoofdvraag ``
 Om de hoofdvraag te beantwoorden is er eerst een antwoord nodig op de volgende deelvragen
 - Wat is de toepassing van de hartslagsensor bij het gebruik van de rolator?
 - Welke type hartslagsensoren zijn er?
@@ -27,16 +26,56 @@ Om de hoofdvraag te beantwoorden is er eerst een antwoord nodig op de volgende d
 
 
 # Methoden 
-`` Per deelvraag een sub-hoofdstuk. Geef per deelvraag de methode van je gegevensverzameling aan. Bijvoorbeeld bronnen raadplegen (boek, link, datasheet, interview). Geef aan welke. Bijvoorbeeld experimenteren. Beschrijf het beoogde experiment.``
+## Wat is de toepassing van de hartslagsensor bij het gebruik van de rolator?
+Gesprek met specialist en stakeholder.
+
+## Welke type hartslagsensoren zijn er?
+Bronnenonderzoek.
+
+## Wat zijn de eigenschappen van de type hartslagsensoren?
+Bronnenonderzoek
+
+## Welke hartslagsensor is het meest geschikt voor het nauwkeurig detecteren van de hartslag bij het gebruik van de rolator?
+Bronnenonderzoek, datasheet.
+
+## Welke technieken zijn nodig om het signaal van de sensor te verwerken?
+Bronnenonderzoek, datasheet.
 
 # Bevindingen
-`` Presenteer per deelvraag de gegevens die je hebt verzameld en de berekeningen die je eventueel hebt gedaan.``
+## Wat is de toepassing van de hartslagsensor bij het gebruik van de rolator?
+Bij de rolator word de gebruiker gepromoot om meer te bewegen, uit onderzoek is gebleken dat mensen die meer bewegen minder snel ziek worden (Lucie, 2024). Om daar inzicht bij te krijgen is een hartslagsensor van groot belang.
+
+## Welke type hartslagsensoren zijn er?
+Er zijn volgens pmc verschillende soorten hartslagsensoren, die elk op hun eigen manier de hartslag detecteren. De eerste manier is op basis van elektrische activiteit, het hard word aangestuurd door middel van kleine stroomschokjes en die kunnen gemeten worden. Deze sensor werkt met electrodes en kan op verschillende manieren worden aangesloten.
+
+De hartslag kan ook door middel van licht gemeten worden, doordat de hartslag een puls effect heeft kan het bloed volume in de huid gemeten worden want die veranderd. Deze sensor werk met LED en Photodetector.
+
+De hartslag kan ook gemeten worden door de beweging (trillingen te meten). Deze methode werd heel lang geleden ontdekt maar bijna nooit gebruikt omdat deze niet heel acuraat is. Hiervoor word een Accelerometer of gyroscoop gebruikt. 
+(Galli et al., 2022)
+
+## Wat zijn de eigenschappen van de type hartslagsensoren?
+Elke soort hartslagsensor heeft zijn eigenschappen.
+Elektrisch: Direct contact met lichaam, neemt veel ruimte in beslag, kost vaak meer, makkelijke dataverwerking, heel erg acuraat
+Licht: Kan zonder contact met lichaam, kleine voetprint, goedkoop, dataverwerking moeilijkheid gemiddeld, redelijk acuraat.
+Mechanisch: Geen direct contact met lichaam, compact, weinig documentatie, moeilijk om data te verwerkten, niet heel accuraat.
+
+## Welke hartslagsensor is het meest geschikt voor het nauwkeurig detecteren van de hartslag bij het gebruik van de rolator?
+Na de vorige deelvragen past de hartslagsensor met licht het beste binnen de toepassing. In het TI lab zijn de volgende licht hartslagsensoren beschikbaar: max30100, ky039, MAX30102.
+
+De ky039 werkt heel simpel maar neemt veel ruimte in beslag.
+De MAX30102 is compact en heeft ook nog veel andere functies zoals bloedzuurstof meten en werkt met het I2C protocol. Deze is ook goed op vooraad.
+De max30100 lijkt op de MAX30102 maar is iets groter, deze werkt ook met I2C.
+
+## Welke technieken zijn nodig om het signaal van de sensor te verwerken?
+Om het signaal van de hartslagsensor te verwerken tot een hartslag kan er gekeken worden naar het hoogste en laagste punt. De tijd tussen de dalen of toppen laat de frequentie zien.
+![heart rate](./image.png) 
 
 # Conclusie
-`` Beantwoord hier de hoofdvraag met behulp van de antwoorden op de deelvragen. De conclusie hoort logisch voort te vloeien uit wat eerder is onderzocht. Het bevat geen nieuwe gegevens. ``
+Er zijn verschillende soorten hartslagsensoren die allemaal hun eigen techniek hebben. Ze werken op basis van electrische activiteit, licht of mechanische beweging. Binnen het project past de hartslagsensor op licht het beste omdat deze compact is en ook werkt als je beweegt. De MAX30102 is een optische hartslagsensor die goede documentatie heeft en op vooraad is. Ook is het signaal makkelijk te verwerken. Dit is dus de best beschikbare hartslagsensor voor de rolator.
 
 # Implementatie
-`` De aanwezigheid van dit hoofdstuk maakt van wat anders een zuivere onderzoeksopdracht zou zijn, een upgrade-opdracht. Implementeer het antwoord op de hoofdvraag. Neem hier een lijstje op met links naar de van toepassing zijnde hardware, code en testsresultaten.``
+De MAX30102 is toegevoegd aan de rolator en geeft goede resultaten. 
+![rolator](./Screenshot_20250130_112952_Gallery.jpg)
 
 # Aanbevelingen
-`` Formuleer op deze plek aanbevelingen voor eventueel verder onderzoek ``
+De volgende aanbeveling is er voor de hartslagsensor: Onderzoek of de sensor in het handvat verwerkt kan worden voor meer gebruikscomfort.
